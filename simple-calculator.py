@@ -1,3 +1,4 @@
+import os
 import sys
 import time
 import telepot
@@ -91,7 +92,9 @@ def on_callback_query(msg):
         result=1
         bot.sendMessage(from_id,'Enter /start to start again')
        	   
-bot = telepot.Bot('Your_teleBot_Token')
+API_TOKEN = os.environ.get("API_TOKEN")
+
+bot = telepot.Bot(API_TOKEN)
 MessageLoop(bot, {'chat': handle,
                   'callback_query': on_callback_query}).run_as_thread()
 print ('Listening ...')
